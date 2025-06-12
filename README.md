@@ -56,3 +56,15 @@ tf.keras.Sequential([
 
     tf.keras.layers.Dense(1)  # Output layer for regression
 ])
+
+
+📌 Key Things I Learned
+How to use BatchNormalization, Dropout, and EarlyStopping to prevent overfitting.
+
+How to fine-tune traditional models using GridSearchCV.
+
+How important feature scaling and coefficient interpretation are.
+
+That an R² of 1 isn't always good — it's likely overfitting.
+
+
