@@ -1,36 +1,58 @@
-# Predicting California House Prices Using Deep Learning 🏡📊
+# 🏡 California House Price Prediction — Linear Regression Deep Dive
 
-This project is my implementation of a deep learning model that predicts median house values in California using the **California Housing dataset**. I built this to sharpen my skills in machine learning, particularly with **TensorFlow**, and to get hands-on experience with a real-world regression problem from start to finish.
+A complete machine learning project to predict **median house values in California** using **deep learning (TensorFlow)** and **regularization models (Ridge, Lasso)**.
 
-## 🔍 Problem I’m Solving
+---
 
-The goal here was to predict how much houses cost in different neighborhoods in California based on features like income, location, population, and housing stats. It’s a great example of how machine learning can be used for real estate forecasting and data-driven investment planning.
+## 🚀 What This Model Does
 
-## 🛠️ Tools & Libraries I Used
+This model predicts housing prices using a real-world dataset: **California Housing** from `sklearn.datasets`. It uses both:
 
-- Python
-- TensorFlow
-- Pandas & NumPy
-- Seaborn & Matplotlib
-- Scikit-learn
+- A custom-built **neural network** trained with TensorFlow/Keras
+- Regularized regression models (**Ridge**, **Lasso**) for comparison
 
-## 🧠 Model Breakdown
+---
 
-- **Model Type**: Deep Neural Network for regression
-- **Features Used**: 8 numerical values (like median income, latitude, rooms per household, etc.)
-- **Loss Function**: Mean Squared Error (MSE)
-- **Optimizer**: Adam
-- **Evaluation**: Mean Absolute Error (MAE) and R² Score
+## 🧰 Tools Used
 
-## 📈 Results
+| Purpose              | Library                |
+|----------------------|------------------------|
+| Deep learning        | TensorFlow / Keras     |
+| Data manipulation    | Pandas, NumPy          |
+| Visualization        | Matplotlib, Seaborn    |
+| ML models & metrics  | Scikit-learn (Ridge, Lasso, GridSearchCV, R², MAE, MSE) |
 
-- Reached over **85% R² score** on the test set
-- Visualized the model’s predictions vs actual values
-- Improved the model using **early stopping** and **dropout layers** to reduce overfitting
+---
 
-## 🧪 How to Run This
+## 📊 Model Results (Neural Network)
 
-If you want to run this yourself, clone the repo and install the required libraries:
+| Metric       | Value    |
+|--------------|----------|
+| R² Score     | ~0.85    |
+| MAE          | ~0.30    |
+| MSE          | ~0.21    |
+| RMSE         | ~0.46    |
 
-```bash
-pip install -r requirements.txt
+> ⚠️ Model is **still being tuned** — early stopping and dropout are implemented to reduce overfitting.
+
+---
+
+## 🧠 Deep Learning Architecture
+
+```python
+tf.keras.Sequential([
+    tf.keras.layers.Input(shape=(n_features,)),
+    tf.keras.layers.Dense(256, activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.Dropout(0.3),
+    
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.Dropout(0.2),
+    
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.Dropout(0.1),
+
+    tf.keras.layers.Dense(1)  # Output layer for regression
+])
